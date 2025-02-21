@@ -20,9 +20,13 @@ paginate: 5
 
 navigation:
     - title: Home
-      url: /main.md
+      url: /index.html
     # - title: About
     #   url: /about
+collections:
+  pages:
+    output: true
+    permalink: /:path/
 
 # social:
 #     github: brianmaierjr

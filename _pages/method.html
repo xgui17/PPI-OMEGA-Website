@@ -1,0 +1,135 @@
+---
+layout: default
+title: Methods
+permalink: /methods/
+---
+
+<h3>Methods</h3>
+
+<h4>Overview</h4>
+<p>
+    The <i>PPI-OMEGA</i> framework is designed to enhance protein-protein interaction (PPI) predictions 
+    by integrating multi-omics data into a graph-based learning model. We leverage a 
+    <b>Variational Graph Autoencoder (VGAE)</b> to capture complex dependencies in PPI networks, using 
+    <b>RNA expression</b> and <b>immunohistochemistry (IHC) protein expression</b> as node attributes.
+</p>
+<!-- 
+Figure: Workflow Diagram
+<figure>
+    <img src="/assets/img/workflow.png" alt="PPI-OMEGA Workflow" width="80%">
+    <figcaption><b>Figure 2:</b> Overview of the PPI-OMEGA pipeline, from data processing to model prediction.</figcaption>
+</figure> -->
+
+<h4>Dataset & Preprocessing</h4>
+<p>
+    We constructed our PPI dataset using the <a href="https://string-db.org/cgi/download?sessionId=bPc4lDeKY0hV">STRING database</a>, which contains interaction confidence scores 
+    for protein pairs. The dataset was filtered to retain the top 5% high-confidence interactions and 
+    mapped to human gene identifiers.
+</p>
+<p>
+    Additional multi-omics features were integrated from <a href="https://www.proteinatlas.org/about/download">The Human Protein Atlas</a>:
+    <ul>
+        <li><b>RNA Expression Data:</b> Processed from 35 tissue types, normalized using TPM values.</li>
+        <li><b>IHC Protein Expression Data:</b> Derived from 45 tissues, discretized into 4 bins of different expression levels.</li>
+    </ul>
+    Principal component analysis (PCA) was conducted separately for normalized RNA expression and protein expression features to reduce dimensionality.
+
+<!-- Figure: Example of Processed Data
+<figure>
+    <img src="/assets/img/data_pipeline.png" alt="Data Processing" width="70%">
+    <figcaption><b>Figure 3:</b> Data processing workflow, integrating PPI interactions with RNA & protein expression data.</figcaption>
+</figure> -->
+
+<h4>Graph Construction</h4>
+<p>
+    Each protein was represented as a node, and edges were formed based on STRING database interactions. 
+    Node attributes included:
+</p>
+<ul>
+    <li><b>Structural Features:</b> Encoded from known PPI networks.</li>
+    <li><b>Node Feature Data:</b> Preprocessed RNA and/or IHC protein values as needed.</li>
+</ul>
+
+<h4>Variational Graph Autoencoder (VGAE) Model</h4>
+<p>
+    Our model follows a standard VGAE framework:
+    <ul>
+        <li><b>Encoder:</b> Two-layer Graph Convolutional Network (GCN) extracts node embeddings.</li>
+        <li><b>Latent Space:</b> A probabilistic layer learns a Gaussian distribution for protein representations.</li>
+        <li><b>Decoder:</b> Dot product of embeddings reconstructs the adjacency matrix.</li>
+    </ul>
+</p>
+
+<!-- Figure: VGAE Model Architecture -->
+<figure>
+    <img src="/assets/img/model_architecture.png" alt="VGAE Architecture" width="50%">
+    <figcaption><b>Figure 2:</b> Architecture of the Variational Graph Autoencoder (Fan et al., 2020).</figcaption>
+</figure>
+
+<h4>Training & Evaluation</h4>
+
+<p>
+    The model is trained using a <b>binary cross-entropy loss</b> with a 
+    <b>Kullback-Leibler (KL) divergence</b> regularization term:
+    \(\mathcal{L} = \mathcal{L}_{recon} + \beta \mathcal{L}_{KL}\).
+    We used the <b>Adam optimizer</b> with a learning rate of 0.001. 
+    Training was stopped when validation loss did not improve by a minimum threshold 
+    within a set number of epochs.
+</p>
+
+<b>Feature Comparison Experiment</b>
+
+<p>
+    To assess the impact of multi-omics data integration, we trained and evaluated the model under 
+    four different feature input conditions:
+</p>
+
+<table>
+    <tr>
+        <th>Feature Set</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>No Features</td>
+        <td>Only the network structure (adjacency matrix) was used as input.</td>
+    </tr>
+    <tr>
+        <td>RNA Only</td>
+        <td>RNA expression profiles were included as node attributes.</td>
+    </tr>
+    <tr>
+        <td>Protein Only</td>
+        <td>IHC protein expression levels were included as node attributes.</td>
+    </tr>
+    <tr>
+        <td>Combined (RNA + Protein)</td>
+        <td>Both RNA expression and IHC protein expression features were integrated.</td>
+    </tr>
+</table>
+
+<p>
+    The performance of each model variant was evaluated using <b>AUROC</b> and <b>AP (Average Precision)</b> scores. 
+</p>
+
+<!-- <p>
+    Evaluation metrics included:
+    <ul>
+        <li><b>AUROC (Area Under Receiver Operating Curve):</b> Measures classification performance.</li>
+        <li><b>AP (Average Precision):</b> Quantifies precision-recall performance.</li>
+    </ul>
+</p> -->
+
+<h4>Navigation</h4>
+<ul>
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/introduction/">Introduction</a></li>
+    <li><a href="/results/">Results</a></li>
+    <li><a href="/discussion/">Discussion</a></li>
+    <li><a href="/future-work/">Future Work</a></li>
+</ul>
+
+<h4>References</h4>
+<ol>
+    <!-- <li>[1] Smith J., et al. "Graph Neural Networks for PPI Prediction." <i>Bioinformatics</i>, 2022.</li>
+    <li>[2] Doe A., et al. "Multi-Omics Integration in PPI Networks." <i>Nature Communications</i>, 2021.</li> -->
+</ol>

@@ -49,18 +49,33 @@ h1 {
  * 1. Add the correct display in IE.
  */
 
-figcaption,
-figure,
-main { /* 1 */
-  display: block;
-}
+// figcaption,
+// figure,
+// main { /* 1 */
+//   display: block;
+// }
 
 /**
  * Add the correct margin in IE 8.
  */
 
+// figure {
+//   margin: 1em 40px;
+// }
+
 figure {
-  margin: 1em 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 20px auto;
+}
+
+figcaption {
+  font-size: 14px; /* Adjust the size as needed */
+  color: #555; /* Optional: Make the caption slightly lighter */
+  margin-top: 5px; /* Space between image and caption */
+  font-style: italic;
 }
 
 /**
