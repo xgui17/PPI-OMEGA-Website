@@ -24,22 +24,18 @@ jobs:
       - name: Update Bundler
         run: gem install bundler --user-install
 
-
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1.6'
           bundler-cache: true
-          cache-version: 4  # Force fresh cache
-      
-      - name: Clean Bundler
-        run: rm -rf vendor/bundle && bundle install --path vendor/bundle
-      
-      - name: Build with Jekyll
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-        env:
-          JEKYLL_ENV: production
+          cache-version: 5  # Increment to force fresh cache
 
+      - name: Reset Bundler Config
+        run: bundle config unset deployment
+
+      - name: Clean Bundler & Install Dependencies
+        run: rm -rf vendor/bundle && bundle install --jobs 4
 
       - name: Check Network
         run: curl https://rubygems.org
@@ -66,3 +62,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
