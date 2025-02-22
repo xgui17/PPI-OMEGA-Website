@@ -30,7 +30,16 @@ jobs:
         with:
           ruby-version: '3.1.6'
           bundler-cache: true
-          cache-version: 3  # Increment to refresh cache
+          cache-version: 4  # Force fresh cache
+      
+      - name: Clean Bundler
+        run: rm -rf vendor/bundle && bundle install --path vendor/bundle
+      
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
 
       - name: Check Network
         run: curl https://rubygems.org
