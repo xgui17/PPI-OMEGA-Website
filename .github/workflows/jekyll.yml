@@ -30,7 +30,7 @@ jobs:
         with:
           ruby-version: '3.1.6'
           bundler-cache: true
-          cache-version: 2  # Increment to refresh cache
+          cache-version: 3  # Increment to refresh cache
 
       - name: Check Network
         run: curl https://rubygems.org
