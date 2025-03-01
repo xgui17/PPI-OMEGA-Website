@@ -32,4 +32,8 @@
 	@import "breakpoints/1200up";
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 // If IE support is needed you can add them here or create another stylesheet for specific IE fixes

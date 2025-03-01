@@ -7,13 +7,19 @@ table {
 	margin-bottom: 1.5em;
 	border-collapse: collapse;
 
+	// caption {
+	// 	margin: 0 0 7px;
+	// 	font-size: 0.75em;
+	// 	color: $grey;
+	// 	// text-transform: uppercase;
+	// 	letter-spacing: 1px;
+	// }
 	caption {
-		margin: 0 0 7px;
-		font-size: 0.75em;
-		color: $grey;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-	}
+		font-size: 14px; /* Adjust the size as needed */
+		color: #555; /* Optional: Make the caption slightly lighter */
+		margin-top: 5px; /* Space between image and caption */
+		font-style: italic;
+	  }
 }
 
 tr {

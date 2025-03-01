@@ -1,12 +1,12 @@
----
+<!-- ---
 layout: default
 title: Discussion & Future Work
 permalink: /discussion/
----
+--- -->
 
-<h3>Discussion & Future Work</h3>
+<h4 id="discussion">Discussion & Future Work</h4>
 
-<h4>Handling Dropped or Unused Data</h4>
+<h5>🟢 Handling Dropped or Unused Data</h5>
 <p>
    One limitation in our current approach is the treatment of dropped or unused data during preprocessing.
    While thresholding and PCA helped reduce noise and dimensionality, it may have also discarded
@@ -23,7 +23,7 @@ permalink: /discussion/
     <li><b>Data imputation strategies</b> to retain valuable biological signals.</li>
 </ul>
 
-<h4>Challenges in Protein Expression Encoding</h4>
+<h5>🟢 Challenges in Protein Expression Encoding</h5>
 <p>
    Our reliance on immunohistochemistry (IHC) protein expression data introduces variability in quantification due to its imaging-based nature.
    More robust quantification techniques could improve the consistency and reliability of protein expression features.
@@ -38,7 +38,7 @@ permalink: /discussion/
     <li>Incorporating time-series expression profiles to model dynamic PPI interactions.</li>
 </ul>
 
-<h4>Integrating Protein Sequence Data</h4>
+<h5>🟢 Integrating Protein Sequence Data</h5>
 <p>
    Our current model*does not include protein sequence features due to time constraints. 
    Most existing PPI prediction methods rely heavily on sequence data, whereas our approach 
@@ -51,7 +51,7 @@ permalink: /discussion/
    further enhances accuracy.
 </p>
 
-<h4>Expanding Model Architecture</h4>
+<h5>🟢 Expanding Model Architecture</h5>
 <p>
    Looking forward, we plan to:
 </p>
@@ -62,10 +62,10 @@ permalink: /discussion/
     <li>Improve model <b>generalizability across tissues and conditions</b> to support precision medicine applications.</li>
 </ul>
 
-<h4>Navigation</h4>
+<!-- <h4>Navigation</h4>
 <ul>
     <li><a href="{{ site.baseurl }}/index.html">Home</a></li>
     <li><a href="{{ site.baseurl }}/introduction/">Introduction</a></li>
     <li><a href="{{ site.baseurl }}/method/">Method</a></li>
     <li><a href="{{ site.baseurl }}/result/">Results</a></li>
-</ul>
+</ul> -->

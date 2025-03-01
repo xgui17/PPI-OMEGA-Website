@@ -1,10 +1,10 @@
----
+<!-- ---
 layout: default
 title: Results
 permalink: /result/
----
+--- -->
 
-<h3>Results</h3>
+<h4 id="result">Results</h4>
 
 <p>
    To evaluate the impact of different input feature combinations on model performance, we conducted an ablation study.
@@ -48,9 +48,10 @@ permalink: /result/
             <td><b>0.9198</b></td>
         </tr>
     </tbody>
+    <caption><b>Table 2:</b> Comparison of AUROC and AP from Ablation Study with Different Feature Sets</caption>
 </table>
 
-<h4>Model Performance Analysis</h4>
+<b>🟢 Model Performance Analysis</b>
 
 <p>
     Our results demonstrate that integrating both <b>RNA and protein expression features</b> led to the highest performance, 
@@ -67,7 +68,7 @@ permalink: /result/
 
 <!-- write about baseline here -->
 
-<h4>Training Dynamics</h4>
+<b>🟢 Training Dynamics</b>
 <p>
     Throughout training, the model exhibited stable convergence patterns, with both AUROC and AP improving progressively 
     across epochs (Figure 1). The final multi-omics model outperformed the RNA-only and protein-only 
@@ -98,12 +99,4 @@ permalink: /result/
     omics layer while minimizing potential redundancies.
 </p> -->
 
-<p><i>Read more detailed results and interpretation on our <a href="https://github.com/EliteApex/PPI-OMEGA/">report<a>.</i></p>
-
-<h4>Navigation</h4>
-<ul>
-    <li><a href="{{ site.baseurl }}/index.html">Home</a></li>
-    <li><a href="{{ site.baseurl }}/introduction/">Introduction</a></li>
-    <li><a href="{{ site.baseurl }}/method/">Method</a></li>
-    <li><a href="{{ site.baseurl }}/discussion/">Discussion & Future Work</a></li>
-</ul>
+<p><i>Read more detailed results and interpretation on our <a href="https://github.com/xgui17/artifact-directory-PPI-OMEGA/blob/main/report.pdf">report<a>.</i></p>

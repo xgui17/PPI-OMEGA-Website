@@ -5,10 +5,19 @@ title: PPI-OMEGA
 <h3>Integrating Multi-Omics Data to Enhance Protein-Protein Interaction Predictions Using Variational Graph Autoencoders</h3> 
 
 
-<h4>Highlights</h4>
+<h4>Table of Contents</h4>
+<ul>
+    <li><a href="#highlight">Highlights</a></li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#method">Method</a></li>
+    <li><a href="#result">Results</a></li>
+    <li><a href="#discussion">Discussion & Future Work</a></li>
+</ul>
+
+<h4 id="highlight">Highlights</h4>
 
 <p>
-    <strong>Protein-protein interaction (PPI)</strong> networks are fundamental for understanding 
+    <b>Protein-protein interaction (PPI)</b> networks are fundamental for understanding 
 	molecular mechanisms in biology, impacting areas such as drug discovery, functional genomics, 
 	and disease pathway identification. However, existing computational approaches often rely on 
 	static datasets, fail to integrate multi-omics data, and struggle with scalability.
@@ -23,24 +32,17 @@ title: PPI-OMEGA
 
 <h5>🟢 Key Findings:</h5>
 <ul>
-    <li><strong>Model based on combined features achieved the highest AUROC (0.9057) and AP (0.9135).</strong></li>
-    <li><strong>Multi-omics integration significantly enhances predictive accuracy</strong>, compared to RNA-only models.</li>
-    <li>Our approach reduces <strong>computational overhead</strong> while facilitating <strong>disease association studies and functional classification</strong>.</li>
+    <li><b>Model based on combined features achieved the highest AUROC (0.9057) and AP (0.9135).</b></li>
+    <li><b>Multi-omics integration significantly enhances predictive accuracy</b>, compared to RNA-only models.</li>
+    <li>Our approach reduces <b>computational overhead</b> while facilitating <b>disease association studies and functional classification</b>.</li>
 </ul>
 
 <p>
-    This research demonstrates the potential of <strong>graph-based multi-omics integration</strong> for improving 
-    <strong>disease-relevant PPI modeling</strong> and advancing <strong>precision medicine applications</strong>.
+    This research demonstrates the potential of <b>graph-based multi-omics integration</b> for improving 
+    <b>disease-relevant PPI modeling</b> and advancing <b>precision medicine applications</b>.
 </p>
 
-<h4>Table of Contents</h4>
-<ul>
-    <li><a href="{{ site.baseurl }}/introduction/">Introduction</a></li>
-    <li><a href="{{ site.baseurl }}/method/">Method</a></li>
-    <li><a href="{{ site.baseurl }}/result/">Result</a></li>
-    <li><a href="{{ site.baseurl }}/discussion/">Discussion & Future Work</a></li>
-</ul>
-
-
-
-
+{% include pages/introduction.html %}
+{% include pages/method.html %}
+{% include pages/result.html %}
+{% include pages/discussion.html %}

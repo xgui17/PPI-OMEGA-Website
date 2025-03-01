@@ -1,12 +1,12 @@
----
+<!-- ---
 layout: default
 title: Methods
 permalink: /method/
----
+--- -->
 
-<h3>Methods</h3>
+<h4 id="method">Methods</h4>
 
-<h4>Overview</h4>
+<b>🟢 Overview</b>
 <p>
     The <i>PPI-OMEGA</i> framework is designed to enhance protein-protein interaction (PPI) predictions 
     by integrating multi-omics data into a graph-based learning model. We leverage a 
@@ -20,7 +20,7 @@ Figure: Workflow Diagram
     <figcaption><b>Figure 2:</b> Overview of the PPI-OMEGA pipeline, from data processing to model prediction.</figcaption>
 </figure> -->
 
-<h4>Dataset & Preprocessing</h4>
+<b>🟢 Dataset & Preprocessing</b>
 <p>
     We constructed our PPI dataset using the <a href="https://string-db.org/cgi/download?sessionId=bPc4lDeKY0hV">STRING database</a>, which contains interaction confidence scores 
     for protein pairs. The dataset was filtered to retain the top 5% high-confidence interactions and 
@@ -40,7 +40,7 @@ Figure: Workflow Diagram
     <figcaption><b>Figure 3:</b> Data processing workflow, integrating PPI interactions with RNA & protein expression data.</figcaption>
 </figure> -->
 
-<h4>Graph Construction</h4>
+<b>🟢 Graph Construction</b>
 <p>
     Each protein was represented as a node, and edges were formed based on STRING database interactions. 
     Node attributes included:
@@ -50,7 +50,7 @@ Figure: Workflow Diagram
     <li><b>Node Feature Data:</b> Preprocessed RNA and/or IHC protein values as needed.</li>
 </ul>
 
-<h4>Variational Graph Autoencoder (VGAE) Model</h4>
+<b>🟢 Variational Graph Autoencoder (VGAE) Model</b>
 <p>
     Our model follows a standard VGAE framework:
     <ul>
@@ -66,7 +66,7 @@ Figure: Workflow Diagram
     <figcaption><b>Figure 2:</b> Architecture of the Variational Graph Autoencoder (Fan et al., 2020).</figcaption>
 </figure>
 
-<h4>Training & Evaluation</h4>
+<b>🟢 Training & Evaluation</b>
 
 <p>
     The model is trained using a <b>binary cross-entropy loss</b> with a 
@@ -77,7 +77,7 @@ Figure: Workflow Diagram
     within a set number of epochs.
 </p>
 
-<b>Ablation Study</b>
+<b>🟢 Ablation Study</b>
 
 <p>
     To assess the impact of multi-omics data integration, we conducted an ablation study during which we trained and evaluated the model under 
@@ -105,6 +105,7 @@ Figure: Workflow Diagram
         <td>Combined (RNA + Protein)</td>
         <td>Both RNA expression and IHC protein expression features were integrated.</td>
     </tr>
+    <caption><b>Table 1:</b> Description of Different Feature Sets used in Ablation Study</caption>
 </table>
 
 <p>
@@ -119,15 +120,8 @@ Figure: Workflow Diagram
     </ul>
 </p> -->
 
-<p><i>Read more about our method architecture and training details on our <a href="https://github.com/EliteApex/PPI-OMEGA/">report<a>.</i></p>
+<p><i>Read more about our method architecture and training details on our <a href="https://github.com/xgui17/artifact-directory-PPI-OMEGA/blob/main/report.pdf">report<a>.</i></p>
 
-<h4>Navigation</h4>
-<ul>
-    <li><a href="{{ site.baseurl }}/index.html">Home</a></li>
-    <li><a href="{{ site.baseurl }}/introduction/">Introduction</a></li>
-    <li><a href="{{ site.baseurl }}/result/">Results</a></li>
-    <li><a href="{{ site.baseurl }}/discussion/">Discussion & Future Work</a></li>
-</ul>
 
 <!-- <h4>References</h4>
 <ol>
