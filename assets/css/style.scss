@@ -35,5 +35,8 @@
 html {
     scroll-behavior: smooth;
 }
+.section {
+    color: inherit; /* Ensures sections do not inherit unwanted colors */
+}
 
 // If IE support is needed you can add them here or create another stylesheet for specific IE fixes

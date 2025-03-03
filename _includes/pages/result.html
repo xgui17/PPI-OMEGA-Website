@@ -4,99 +4,101 @@ title: Results
 permalink: /result/
 --- -->
 
-<h4 id="result">Results</h4>
+<div class="section">
+    <h4 id="result">Results</h4>
 
-<p>
-   To evaluate the impact of different input feature combinations on model performance, we conducted an ablation study.
-   Table 1 presents AUROC and AP scores for four configurations: using no features, using only RNA expression, using only protein expression,
-   and combining both features.
-</p>
+    <p>
+    To evaluate the impact of different input feature combinations on model performance, we conducted an ablation study.
+    Table 2 presents AUROC and AP scores for four configurations: using no features, using only RNA expression, using only protein expression,
+    and combining both features.
+    </p>
 
-<!-- Result Table -->
-<table>
-    <thead>
-        <tr>
-            <th>RNA Exp.</th>
-            <th>IHC Protein Exp.</th>
-            <th>AUROC</th>
-            <th>AP</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>❌</td>
-            <td>❌</td>
-            <td>TBD</td>
-            <td>TBD</td>
-        </tr>
-        <tr>
-            <td>✅</td>
-            <td>❌</td>
-            <td>0.8837</td>
-            <td>0.8972</td>
-        </tr>
-        <tr>
-            <td>❌</td>
-            <td>✅</td>
-            <td>0.9057</td>
-            <td>0.9135</td>
-        </tr>
-        <tr>
-            <td>✅</td>
-            <td>✅</td>
-            <td><b>0.9115</b></td>
-            <td><b>0.9198</b></td>
-        </tr>
-    </tbody>
-    <caption><b>Table 2:</b> Comparison of AUROC and AP from Ablation Study with Different Feature Sets</caption>
-</table>
+    <!-- Result Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>RNA Exp.</th>
+                <th>IHC Protein Exp.</th>
+                <th>AUROC</th>
+                <th>AP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>❌</td>
+                <td>❌</td>
+                <td>TBD</td>
+                <td>TBD</td>
+            </tr>
+            <tr>
+                <td>✅</td>
+                <td>❌</td>
+                <td>0.8837</td>
+                <td>0.8972</td>
+            </tr>
+            <tr>
+                <td>❌</td>
+                <td>✅</td>
+                <td>0.9057</td>
+                <td>0.9135</td>
+            </tr>
+            <tr>
+                <td>✅</td>
+                <td>✅</td>
+                <td><b>0.9115</b></td>
+                <td><b>0.9198</b></td>
+            </tr>
+        </tbody>
+        <caption><b>Table 2:</b> Comparison of AUROC and AP from Ablation Study with Different Feature Sets</caption>
+    </table>
 
-<b>🟢 Model Performance Analysis</b>
+    <b>🟢 Model Performance Analysis</b>
 
-<p>
-    Our results demonstrate that integrating both <b>RNA and protein expression features</b> led to the highest performance, 
-    with an <b>AUROC of 0.9115 and an AP of 0.9198</b>. This confirms that incorporating multi-omics data enhances PPI 
-    prediction compared to using RNA or protein expression alone.
-</p>
+    <p>
+        Our results demonstrate that integrating both <b>RNA and protein expression features</b> led to the highest performance, 
+        with an <b>AUROC of 0.9115 and an AP of 0.9198</b>. This confirms that incorporating multi-omics data enhances PPI 
+        prediction compared to using RNA or protein expression alone.
+    </p>
 
-<p>
-    Notably, the model trained with protein expression (IHC data) achieved an AUROC of 0.9057, surpassing the RNA-only 
-    model (AUROC = 0.8837). This suggests that protein expression features provide a stronger signal for identifying 
-    functional interactions. Meanwhile, the RNA-only model still showed competitive performance, reinforcing the value of 
-    transcriptomic data in PPI prediction.
-</p>
+    <p>
+        Notably, the model trained with protein expression (IHC data) achieved an AUROC of 0.9057, surpassing the RNA-only 
+        model (AUROC = 0.8837). This suggests that protein expression features provide a stronger signal for identifying 
+        functional interactions. Meanwhile, the RNA-only model still showed competitive performance, reinforcing the value of 
+        transcriptomic data in PPI prediction.
+    </p>
 
-<!-- write about baseline here -->
+    <!-- write about baseline here -->
 
-<b>🟢 Training Dynamics</b>
-<p>
-    Throughout training, the model exhibited stable convergence patterns, with both AUROC and AP improving progressively 
-    across epochs (Figure 1). The final multi-omics model outperformed the RNA-only and protein-only 
-    configurations, underscoring the benefits of integrating complementary molecular data.
-</p>
+    <b>🟢 Training Dynamics</b>
+    <p>
+        Throughout training, the model exhibited stable convergence patterns, with both AUROC and AP improving progressively 
+        across epochs (Figure 1). The final multi-omics model outperformed the RNA-only and protein-only 
+        configurations, underscoring the benefits of integrating complementary molecular data.
+    </p>
 
-<!-- put updated figure here -->
-<!-- <figure>
-    <img src="{{ site.baseurl }}/assets/img/training_curve.jpg" alt="Training Performance" width="50%">
-    <figcaption><b>Figure 1:</b> AUROC and AP scores across training epochs for PPI-OMEGA.</figcaption>
-</figure> -->
+    <!-- put updated figure here -->
+    <!-- <figure>
+        <img src="{{ site.baseurl }}/assets/img/training_curve.jpg" alt="Training Performance" width="50%">
+        <figcaption><b>Figure 1:</b> AUROC and AP scores across training epochs for PPI-OMEGA.</figcaption>
+    </figure> -->
 
-<!-- <h4>Precision-Recall Performance</h4>
-<p>
-    The Precision-Recall curve (Figure 2) highlights the model's ability to accurately classify interacting and 
-    non-interacting protein pairs. The high **Average Precision (AP = 0.9198)** indicates strong predictive power, 
-    further validating the advantages of multi-omics integration.
-</p> -->
+    <!-- <h4>Precision-Recall Performance</h4>
+    <p>
+        The Precision-Recall curve (Figure 2) highlights the model's ability to accurately classify interacting and 
+        non-interacting protein pairs. The high **Average Precision (AP = 0.9198)** indicates strong predictive power, 
+        further validating the advantages of multi-omics integration.
+    </p> -->
 
-<!-- Precision-Recall Curve -->
-<!-- <figure>
-    <img src="{{ site.baseurl }}/assets/img/PR_curve.jpg" alt="Precision-Recall Curve" width="70%">
-    <figcaption><b>Figure 2:</b> Precision-Recall curve for PPI-OMEGA.</figcaption>
-</figure> -->
-<!-- 
-<p>
-    Future improvements will focus on **optimizing feature weighting** to maximize predictive contributions from each 
-    omics layer while minimizing potential redundancies.
-</p> -->
+    <!-- Precision-Recall Curve -->
+    <!-- <figure>
+        <img src="{{ site.baseurl }}/assets/img/PR_curve.jpg" alt="Precision-Recall Curve" width="70%">
+        <figcaption><b>Figure 2:</b> Precision-Recall curve for PPI-OMEGA.</figcaption>
+    </figure> -->
+    <!-- 
+    <p>
+        Future improvements will focus on **optimizing feature weighting** to maximize predictive contributions from each 
+        omics layer while minimizing potential redundancies.
+    </p> -->
 
-<p><i>Read more detailed results and interpretation on our <a href="https://github.com/xgui17/artifact-directory-PPI-OMEGA/blob/main/report.pdf">report<a>.</i></p>
+    <p><i>Read more detailed results and interpretation on our <a href="https://github.com/xgui17/artifact-directory-PPI-OMEGA/blob/main/report.pdf">report<a>.</i></p>
+</div>
