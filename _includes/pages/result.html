@@ -4,8 +4,8 @@ title: Results
 permalink: /result/
 --- -->
 
-<div class="section">
-    <h4 id="result">Results</h4>
+<div class="main-content" id="result">
+    <h4 id="result-header">Results</h4>
 
     <p>
     To evaluate the impact of different input feature combinations on model performance, we conducted an ablation study.
@@ -61,11 +61,10 @@ permalink: /result/
     </p>
 
     <p>
-        Notably, the model trained with protein expression (IHC data) achieved an AUROC of 0.9057, surpassing the RNA-only 
-        model (AUROC = 0.8837). This suggests that protein expression features provide a stronger signal for identifying 
-        functional interactions. Meanwhile, the RNA-only model still showed competitive performance, reinforcing the value of 
-        transcriptomic data in PPI prediction.
-    </p>
+        Notably, the model trained with protein expression (IHC data) achieved an AUROC of 0.9215 and an AP of 0.9297, surpassing the RNA-only 
+        model (AUROC = 0.8888, AP = 0.9026). This suggests that protein expression features provide a stronger signal for identifying 
+        functional interactions. Meanwhile, the addition of RNA expression demonstrates diminishing return, which highlights needs to look for potential more relevant data.
+    </p> 
 
     <!-- write about baseline here -->
 
@@ -100,5 +99,5 @@ permalink: /result/
         omics layer while minimizing potential redundancies.
     </p> -->
 
-    <p><i>Read more detailed results and interpretation on our <a href="https://github.com/xgui17/artifact-directory-PPI-OMEGA/blob/main/report.pdf">report<a>.</i></p>
+    <p><i>Read more detailed results and interpretation on our <a href="https://github.com/xgui17/artifact-directory-PPI-OMEGA/blob/main/report.pdf">report</a>.</i></p>
 </div>

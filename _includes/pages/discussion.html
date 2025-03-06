@@ -4,68 +4,62 @@ title: Discussion & Future Work
 permalink: /discussion/
 --- -->
 
-<h4 id="discussion">Discussion & Future Work</h4>
+<div class="main-content" id="discussion"></div>
+   <h4 id="discussion-header">Discussion & Future Work</h4>
 
-<b>🟢 Handling Dropped or Unused Data</b>
-<p>
-   One limitation in our current approach is the treatment of dropped or unused data during preprocessing.
-   While thresholding and PCA helped reduce noise and dimensionality, it may have also discarded
-   potentially informative low-confidence PPIs or subtle expression variations. Besides, a proportion of proteins 
-   were excluded because of the lack of corresponding multi-omics data. This exclusion may have led to information loss, 
-   potentially biasing the model toward well-characterized proteins while overlooking biologically relevant but less-studied interactions.
-</p>
+   <b>🟢 Handling Dropped or Unused Data</b>
+   <p>
+      One limitation in our current approach is the treatment of dropped or unused data during preprocessing.
+      While thresholding and PCA helped reduce noise and dimensionality, it may have also discarded
+      potentially informative low-confidence PPIs or subtle expression variations. Besides, a proportion of proteins 
+      were excluded because of the lack of corresponding multi-omics data. This exclusion may have led to information loss, 
+      potentially biasing the model toward well-characterized proteins while overlooking biologically relevant but less-studied interactions.
+   </p>
 
-<p>
-   Future work could explore:
-</p>
-<ul>
-    <li><b>Adaptive thresholding techniques</b> to dynamically adjust inclusion criteria for interactions.</li>
-    <li><b>Data imputation strategies</b> to retain valuable biological signals.</li>
-</ul>
+   <p>
+      Future work could explore:
+   </p>
+   <ul>
+      <li><b>Adaptive thresholding techniques</b> to dynamically adjust inclusion criteria for interactions.</li>
+      <li><b>Data imputation strategies</b> to retain valuable biological signals.</li>
+   </ul>
 
-<b>🟢 Challenges in Protein Expression Encoding</b>
-<p>
-   Our reliance on immunohistochemistry (IHC) protein expression data introduces variability in quantification due to its imaging-based nature.
-   More robust quantification techniques could improve the consistency and reliability of protein expression features.
-</p>
+   <b>🟢 Challenges in Protein Expression Encoding</b>
+   <p>
+      Our reliance on immunohistochemistry (IHC) protein expression data introduces variability in quantification due to its imaging-based nature.
+      More robust quantification techniques could improve the consistency and reliability of protein expression features.
+   </p>
 
-<p>
-   Potential improvements include:
-</p>
-<ul>
-    <li>Using mass spectrometry-based proteomics for higher accuracy.</li>
-    <li>Normalizing expression values across datasets to reduce noise.</li>
-    <li>Incorporating time-series expression profiles to model dynamic PPI interactions.</li>
-</ul>
+   <p>
+      Potential improvements include:
+   </p>
+   <ul>
+      <li>Using mass spectrometry-based proteomics for higher accuracy.</li>
+      <li>Normalizing expression values across datasets to reduce noise.</li>
+      <li>Incorporating time-series expression profiles to model dynamic PPI interactions.</li>
+   </ul>
 
-<b>🟢 Integrating Protein Sequence Data</b>
-<p>
-   Our current model*does not include protein sequence features due to time constraints. 
-   Most existing PPI prediction methods rely heavily on sequence data, whereas our approach 
-   focused on RNA and protein expression. However, our results demonstrate that multi-omics 
-   integration can significantly improve PPI prediction.
-</p>
+   <b>🟢 Integrating Protein Sequence Data</b>
+   <p>
+      Our current model*does not include protein sequence features due to time constraints. 
+      Most existing PPI prediction methods rely heavily on sequence data, whereas our approach 
+      focused on RNA and protein expression. However, our results demonstrate that multi-omics 
+      integration can significantly improve PPI prediction.
+   </p>
 
-<p>
-   Future work will benchmark our model against sequence-based methods to determine if integrating sequence data 
-   further enhances accuracy.
-</p>
+   <p>
+      Future work will benchmark our model against sequence-based methods to determine if integrating sequence data 
+      further enhances accuracy.
+   </p>
 
-<b>🟢 Expanding Model Architecture</b>
-<p>
-   Looking forward, we plan to:
-</p>
-<ul>
-    <li>Introduce an <b>attention mechanism</b> to allow the model to focus on critical protein interactions.</li>
-    <li>Incorporate additional omics data, such as <b>epigenetic modifications</b> or <b>metabolic profiles</b>.</li>
-    <li>Address class imbalance by reducing false positive rates.</li>
-    <li>Improve model <b>generalizability across tissues and conditions</b> to support precision medicine applications.</li>
-</ul>
-
-<!-- <h4>Navigation</h4>
-<ul>
-    <li><a href="{{ site.baseurl }}/index.html">Home</a></li>
-    <li><a href="{{ site.baseurl }}/introduction/">Introduction</a></li>
-    <li><a href="{{ site.baseurl }}/method/">Method</a></li>
-    <li><a href="{{ site.baseurl }}/result/">Results</a></li>
-</ul> -->
+   <b>🟢 Expanding Model Architecture</b>
+   <p>
+      Looking forward, we plan to:
+   </p>
+   <ul>
+      <li>Introduce an <b>attention mechanism</b> to allow the model to focus on critical protein interactions.</li>
+      <li>Incorporate additional omics data, such as <b>epigenetic modifications</b> or <b>metabolic profiles</b>.</li>
+      <li>Address class imbalance by reducing false positive rates.</li>
+      <li>Improve model <b>generalizability across tissues and conditions</b> to support precision medicine applications.</li>
+   </ul>
+</div>

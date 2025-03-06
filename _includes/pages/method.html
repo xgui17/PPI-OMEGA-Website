@@ -4,125 +4,126 @@ title: Methods
 permalink: /method/
 --- -->
 
-<h4 id="method">Methods</h4>
+<div class="main-content" id="method">
+    <h4 id="method-header">Methods</h4>
 
-<b>🟢 Overview</b>
-<p>
-    The <i>PPI-OMEGA</i> framework is designed to enhance protein-protein interaction (PPI) predictions 
-    by integrating multi-omics data into a graph-based learning model. We leverage a 
-    <b>Variational Graph Autoencoder (VGAE)</b> to capture complex dependencies in PPI networks, using 
-    <b>RNA expression</b> and <b>immunohistochemistry (IHC) protein expression</b> as node attributes.
-</p>
-<!-- 
-Figure: Workflow Diagram
-<figure>
-    <img src="/assets/img/workflow.png" alt="PPI-OMEGA Workflow" width="80%">
-    <figcaption><b>Figure 2:</b> Overview of the PPI-OMEGA pipeline, from data processing to model prediction.</figcaption>
-</figure> -->
+    <b>🟢 Overview</b>
+    <p>
+        The <i>PPI-OMEGA</i> framework is designed to enhance protein-protein interaction (PPI) predictions 
+        by integrating multi-omics data into a graph-based learning model. We leverage a 
+        <b>Variational Graph Autoencoder (VGAE)</b> to capture complex dependencies in PPI networks, using 
+        <b>RNA expression</b> and <b>immunohistochemistry (IHC) protein expression</b> as node attributes.
+    </p>
+    <!-- 
+    Figure: Workflow Diagram
+    <figure>
+        <img src="/assets/img/workflow.png" alt="PPI-OMEGA Workflow" width="80%">
+        <figcaption><b>Figure 2:</b> Overview of the PPI-OMEGA pipeline, from data processing to model prediction.</figcaption>
+    </figure> -->
 
-<b>🟢 Dataset & Preprocessing</b>
-<p>
-    We constructed our PPI dataset using the <a href="https://string-db.org/cgi/download?sessionId=bPc4lDeKY0hV">STRING database</a>, which contains interaction confidence scores 
-    for protein pairs. The dataset was filtered to retain the top 5% high-confidence interactions and 
-    mapped to human gene identifiers.
-</p>
-<p>
-    Additional multi-omics features were integrated from <a href="https://www.proteinatlas.org/about/download">The Human Protein Atlas</a>:
+    <b>🟢 Dataset & Preprocessing</b>
+    <p>
+        We constructed our PPI dataset using the <a href="https://string-db.org/cgi/download?sessionId=bPc4lDeKY0hV">STRING database</a>, which contains interaction confidence scores 
+        for protein pairs. The dataset was filtered to retain the top 5% high-confidence interactions and 
+        mapped to human gene identifiers.
+    </p>
+    <p>
+        Additional multi-omics features were integrated from <a href="https://www.proteinatlas.org/about/download">The Human Protein Atlas</a>:
+        <ul>
+            <li><b>RNA Expression Data:</b> Processed from 35 tissue types, normalized using TPM values.</li>
+            <li><b>IHC Protein Expression Data:</b> Derived from 45 tissues, discretized into 4 bins of different expression levels.</li>
+        </ul>
+        Principal component analysis (PCA) was conducted separately for normalized RNA expression and protein expression features to reduce dimensionality.
+    </p>
+
+    <!-- Figure: Example of Processed Data
+    <figure>
+        <img src="/assets/img/data_pipeline.png" alt="Data Processing" width="70%">
+        <figcaption><b>Figure 3:</b> Data processing workflow, integrating PPI interactions with RNA & protein expression data.</figcaption>
+    </figure> -->
+
+    <b>🟢 Graph Construction</b>
+    <p>
+        Each protein was represented as a node, and edges were formed based on STRING database interactions. 
+        Node attributes included:
+    </p>
     <ul>
-        <li><b>RNA Expression Data:</b> Processed from 35 tissue types, normalized using TPM values.</li>
-        <li><b>IHC Protein Expression Data:</b> Derived from 45 tissues, discretized into 4 bins of different expression levels.</li>
+        <li><b>Structural Features:</b> Encoded from known PPI networks.</li>
+        <li><b>Node Feature Data:</b> Preprocessed RNA and/or IHC protein values as needed.</li>
     </ul>
-    Principal component analysis (PCA) was conducted separately for normalized RNA expression and protein expression features to reduce dimensionality.
-</p>
 
-<!-- Figure: Example of Processed Data
-<figure>
-    <img src="/assets/img/data_pipeline.png" alt="Data Processing" width="70%">
-    <figcaption><b>Figure 3:</b> Data processing workflow, integrating PPI interactions with RNA & protein expression data.</figcaption>
-</figure> -->
+    <b>🟢 Variational Graph Autoencoder (VGAE) Model</b>
+    <p>
+        Our model follows a standard VGAE framework:
+        <ul>
+            <li><b>Encoder:</b> Two-layer Graph Convolutional Network (GCN) extracts node embeddings.</li>
+            <li><b>Latent Space:</b> A probabilistic layer learns a Gaussian distribution for protein representations.</li>
+            <li><b>Decoder:</b> Dot product of embeddings reconstructs the adjacency matrix.</li>
+        </ul>
+    </p>
 
-<b>🟢 Graph Construction</b>
-<p>
-    Each protein was represented as a node, and edges were formed based on STRING database interactions. 
-    Node attributes included:
-</p>
-<ul>
-    <li><b>Structural Features:</b> Encoded from known PPI networks.</li>
-    <li><b>Node Feature Data:</b> Preprocessed RNA and/or IHC protein values as needed.</li>
-</ul>
+    <!-- Figure: VGAE Model Architecture -->
+    <figure>
+        <img src="{{ site.baseurl }}/assets/img/model_architecture.png" alt="VGAE Architecture" width="80%">
+        <figcaption><b>Figure 2:</b> Architecture of the Variational Graph Autoencoder (Fan et al., 2020).</figcaption>
+    </figure>
 
-<b>🟢 Variational Graph Autoencoder (VGAE) Model</b>
-<p>
-    Our model follows a standard VGAE framework:
-    <ul>
-        <li><b>Encoder:</b> Two-layer Graph Convolutional Network (GCN) extracts node embeddings.</li>
-        <li><b>Latent Space:</b> A probabilistic layer learns a Gaussian distribution for protein representations.</li>
-        <li><b>Decoder:</b> Dot product of embeddings reconstructs the adjacency matrix.</li>
-    </ul>
-</p>
+    <b>🟢 Training & Evaluation</b>
 
-<!-- Figure: VGAE Model Architecture -->
-<figure>
-    <img src="{{ site.baseurl }}/assets/img/model_architecture.png" alt="VGAE Architecture" width="80%">
-    <figcaption><b>Figure 2:</b> Architecture of the Variational Graph Autoencoder (Fan et al., 2020).</figcaption>
-</figure>
+    <p>
+        The model is trained using a <b>binary cross-entropy loss</b> with a 
+        <b>Kullback-Leibler (KL) divergence</b> regularization term:
+        \(\mathcal{L} = \mathcal{L}_{recon} + \beta \mathcal{L}_{KL}\).
+        We used the <b>Adam optimizer</b> with a learning rate of 0.001. 
+        Training was stopped when validation loss did not improve by a minimum threshold 
+        within a set number of epochs.
+    </p>
 
-<b>🟢 Training & Evaluation</b>
+    <b>🟢 Ablation Study</b>
 
-<p>
-    The model is trained using a <b>binary cross-entropy loss</b> with a 
-    <b>Kullback-Leibler (KL) divergence</b> regularization term:
-    \(\mathcal{L} = \mathcal{L}_{recon} + \beta \mathcal{L}_{KL}\).
-    We used the <b>Adam optimizer</b> with a learning rate of 0.001. 
-    Training was stopped when validation loss did not improve by a minimum threshold 
-    within a set number of epochs.
-</p>
+    <p>
+        To assess the impact of multi-omics data integration, we conducted an ablation study during which we trained and evaluated the model under 
+        four different feature input conditions:
+    </p>
 
-<b>🟢 Ablation Study</b>
+    <table>
+        <tr>
+            <th>Feature Set</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>No Features</td>
+            <td>Only the network structure (adjacency matrix) was used as input.</td>
+        </tr>
+        <tr>
+            <td>RNA Only</td>
+            <td>RNA expression profiles were included as node attributes.</td>
+        </tr>
+        <tr>
+            <td>Protein Only</td>
+            <td>IHC protein expression levels were included as node attributes.</td>
+        </tr>
+        <tr>
+            <td>Combined (RNA + Protein)</td>
+            <td>Both RNA expression and IHC protein expression features were integrated.</td>
+        </tr>
+        <caption><b>Table 1:</b> Description of Different Feature Sets used in Ablation Study</caption>
+    </table>
 
-<p>
-    To assess the impact of multi-omics data integration, we conducted an ablation study during which we trained and evaluated the model under 
-    four different feature input conditions:
-</p>
+    <p>
+        The performance of each model variant was evaluated using <b>AUROC</b> and <b>AP (Average Precision)</b> scores. 
+    </p>
 
-<table>
-    <tr>
-        <th>Feature Set</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>No Features</td>
-        <td>Only the network structure (adjacency matrix) was used as input.</td>
-    </tr>
-    <tr>
-        <td>RNA Only</td>
-        <td>RNA expression profiles were included as node attributes.</td>
-    </tr>
-    <tr>
-        <td>Protein Only</td>
-        <td>IHC protein expression levels were included as node attributes.</td>
-    </tr>
-    <tr>
-        <td>Combined (RNA + Protein)</td>
-        <td>Both RNA expression and IHC protein expression features were integrated.</td>
-    </tr>
-    <caption><b>Table 1:</b> Description of Different Feature Sets used in Ablation Study</caption>
-</table>
+    <!-- <p>
+        Evaluation metrics included:
+        <ul>
+            <li><b>AUROC (Area Under Receiver Operating Curve):</b> Measures classification performance.</li>
+            <li><b>AP (Average Precision):</b> Quantifies precision-recall performance.</li>
+        </ul>
+    </p> -->
 
-<p>
-    The performance of each model variant was evaluated using <b>AUROC</b> and <b>AP (Average Precision)</b> scores. 
-</p>
-
-<!-- <p>
-    Evaluation metrics included:
-    <ul>
-        <li><b>AUROC (Area Under Receiver Operating Curve):</b> Measures classification performance.</li>
-        <li><b>AP (Average Precision):</b> Quantifies precision-recall performance.</li>
-    </ul>
-</p> -->
-
-<p><i>Read more about our method architecture and training details on our <a href="https://github.com/xgui17/artifact-directory-PPI-OMEGA/blob/main/report.pdf">report<a>.</i></p>
-
+    <p><i>Read more about our method architecture and training details on our <a href="https://github.com/xgui17/artifact-directory-PPI-OMEGA/blob/main/report.pdf">report</a>.</i></p>
+</div>
 
 <!-- <h4>References</h4>
 <ol>
