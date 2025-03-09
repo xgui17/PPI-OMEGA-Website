@@ -4,62 +4,63 @@ title: Discussion & Future Work
 permalink: /discussion/
 --- -->
 
-<div class="main-content" id="discussion"></div>
-   <h4 id="discussion-header">Discussion & Future Work</h4>
+<div class="main-content" id="discussion">
+   <h2 id="discussion-header">Discussion & Future Work</h2>
+
+   <b>🟢 Enhancing PPI Prediction with Multi-Omics</b>
+   <p>
+      Predicting protein-protein interactions (PPIs) is essential for understanding biological systems, disease mechanisms, and drug discovery. Traditional models primarily rely on sequence data, but our study demonstrates that incorporating RNA and protein expression significantly improves prediction accuracy. This multi-omics approach captures functional relationships beyond what sequence data alone can reveal. Future work will explore integrating additional biological layers, such as metabolomics and epigenomics, for a more comprehensive understanding of PPIs.
+   </p>
 
    <b>🟢 Handling Dropped or Unused Data</b>
    <p>
-      One limitation in our current approach is the treatment of dropped or unused data during preprocessing.
-      While thresholding and PCA helped reduce noise and dimensionality, it may have also discarded
-      potentially informative low-confidence PPIs or subtle expression variations. Besides, a proportion of proteins 
-      were excluded because of the lack of corresponding multi-omics data. This exclusion may have led to information loss, 
-      potentially biasing the model toward well-characterized proteins while overlooking biologically relevant but less-studied interactions.
-   </p>
-
-   <p>
-      Future work could explore:
+      Preprocessing decisions impact the quality of PPI predictions. While thresholding and PCA reduce noise, they may also remove informative low-confidence PPIs or rare expression patterns. To improve data retention and maintain biological signal integrity, future work will explore:
    </p>
    <ul>
-      <li><b>Adaptive thresholding techniques</b> to dynamically adjust inclusion criteria for interactions.</li>
-      <li><b>Data imputation strategies</b> to retain valuable biological signals.</li>
+      <li><b>Adaptive thresholding</b> to refine data inclusion dynamically.</li>
+      <li><b>Data imputation</b> to recover missing but meaningful information.</li>
+      <li><b>Feature selection</b> to balance dimensionality reduction and biological relevance.</li>
    </ul>
 
-   <b>🟢 Challenges in Protein Expression Encoding</b>
+   <b>🟢 Improving Protein Expression Encoding</b>
    <p>
-      Our reliance on immunohistochemistry (IHC) protein expression data introduces variability in quantification due to its imaging-based nature.
-      More robust quantification techniques could improve the consistency and reliability of protein expression features.
-   </p>
-
-   <p>
-      Potential improvements include:
+      Our reliance on immunohistochemistry (IHC) data introduces variability in protein quantification. More precise techniques will enhance the robustness of our model, including:
    </p>
    <ul>
-      <li>Using mass spectrometry-based proteomics for higher accuracy.</li>
-      <li>Normalizing expression values across datasets to reduce noise.</li>
-      <li>Incorporating time-series expression profiles to model dynamic PPI interactions.</li>
+      <li>Using <b>mass spectrometry-based proteomics</b> for accurate protein quantification.</li>
+      <li>Normalizing <b>RNA-protein expression values</b> across datasets.</li>
+      <li>Incorporating <b>time-series expression data</b> to capture dynamic PPI interactions.</li>
+      <li>Exploring <b>single-cell transcriptomics</b> to improve resolution in cellular studies.</li>
    </ul>
 
-   <b>🟢 Integrating Protein Sequence Data</b>
+   <b>🟢 Integrating Protein Sequence Features</b>
    <p>
-      Our current model*does not include protein sequence features due to time constraints. 
-      Most existing PPI prediction methods rely heavily on sequence data, whereas our approach 
-      focused on RNA and protein expression. However, our results demonstrate that multi-omics 
-      integration can significantly improve PPI prediction.
+      While our study focused on multi-omics data, protein sequence information remains a fundamental component of PPI prediction. Many models leverage structural motifs and conserved domains for interaction analysis. Future work will integrate sequence-based features with multi-omics data to enhance accuracy and uncover novel PPIs relevant to disease research.
    </p>
 
+   <b>🟢 Advancing Model Architecture</b>
    <p>
-      Future work will benchmark our model against sequence-based methods to determine if integrating sequence data 
-      further enhances accuracy.
-   </p>
-
-   <b>🟢 Expanding Model Architecture</b>
-   <p>
-      Looking forward, we plan to:
+      Improving model interpretability and predictive power requires architectural refinements. Planned enhancements include:
    </p>
    <ul>
-      <li>Introduce an <b>attention mechanism</b> to allow the model to focus on critical protein interactions.</li>
-      <li>Incorporate additional omics data, such as <b>epigenetic modifications</b> or <b>metabolic profiles</b>.</li>
-      <li>Address class imbalance by reducing false positive rates.</li>
-      <li>Improve model <b>generalizability across tissues and conditions</b> to support precision medicine applications.</li>
+      <li>Implementing <b>attention mechanisms</b> to prioritize biologically significant interactions.</li>
+      <li>Expanding multi-omics integration to include <b>epigenetic and metabolic profiles</b>.</li>
+      <li>Addressing <b>class imbalance</b> to minimize false positives in real-world applications.</li>
+      <li>Enhancing <b>generalizability across tissues</b> for precision medicine applications.</li>
+      <li>Exploring <b>graph-based deep learning</b> to model complex biological networks.</li>
    </ul>
+
+   <b>🟢 Real-World Impact</b>
+   <p>
+      More accurate PPI prediction models have broad applications in biomedical research. Our findings contribute to:
+   </p>
+   <ul>
+      <li><b>Drug discovery</b> – Identifying novel drug targets and reducing off-target effects.</li>
+      <li><b>Disease modeling</b> – Mapping interaction networks in genetic disorders and cancers.</li>
+      <li><b>Precision medicine</b> – Personalizing treatments based on molecular profiles.</li>
+      <li><b>Systems biology</b> – Providing deeper insights into cellular mechanisms.</li>
+   </ul>
+   <p>
+      Moving forward, we will expand our datasets, refine our methodologies, and collaborate with experimental biologists to validate findings. By bridging computational predictions with experimental validation, we aim to create a biologically informed AI-driven tool for PPI analysis, driving new discoveries in molecular biology and therapeutic research.
+   </p>
 </div>
