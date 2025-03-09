@@ -7,10 +7,11 @@ permalink: /introduction/
 <h4 id="introduction">Introduction</h4>
 
 <p>
-    Protein-protein interactions (PPIs) are fundamental to cellular function, governing key processes such as 
-    signal transduction, gene regulation, and metabolic pathways. Understanding these interactions provides 
-    valuable insights into disease mechanisms and therapeutic target discovery.
+    <b>Protein-protein interactions (PPIs)</b> are fundamental to cellular function, governing key processes such as 
+    signal transduction, gene regulation, and metabolic pathways. Understanding these interactions is crucial for 
+    identifying disease mechanisms, discovering therapeutic targets, and advancing functional genomics.
 </p>
+
 
 <figure>
     <img src="{{ site.baseurl }}/assets/img/PPI_vis.jpg" alt="PPI-overview" width="80%">
@@ -18,10 +19,11 @@ permalink: /introduction/
 </figure>
 
 <p>
-    Traditional computational models for PPI prediction often rely on static datasets derived from high-throughput 
-    experiments. However, these approaches face significant limitations, including an inability to account for 
-    tissue-specific variations and a reliance on pre-existing interaction databases. As a result, they may 
-    overlook functionally relevant interactions, limiting their applicability to dynamic biological systems.
+    Traditional computational models for PPI prediction primarily rely on static datasets derived from high-throughput 
+    experiments. However, these models face critical limitations, including their inability to incorporate 
+    dynamic biological contexts, lack of multi-omics integration, and high computational costs when applied 
+    to large-scale datasets. As a result, they often fail to capture tissue-specific interactions and may overlook 
+    biologically significant but previously uncharacterized PPIs.
 </p>
 
 <p>
@@ -33,6 +35,10 @@ permalink: /introduction/
 
 <p>
     This study details our methodology, including data preprocessing, model architecture, and evaluation metrics. 
-    We compare our approach to existing models and discuss its potential impact on precision medicine, disease pathway 
-    analysis, and functional genomics.
+    Through an ablation study, we demonstrate that multi-omics integration significantly improves prediction accuracy, 
+    with the combined RNA and protein expression model achieving the highest AUROC (0.9235) and AP (0.9318). 
+    We also analyze the biological relevance of our learned protein embeddings, revealing their ability to distinguish 
+    housekeeping and context-dependent proteins. Finally, we discuss the broader implications of our findings, particularly 
+    in precision medicine, disease pathway analysis, and functional classification.
 </p>
+

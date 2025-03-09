@@ -14,12 +14,6 @@ permalink: /method/
         <b>Variational Graph Autoencoder (VGAE)</b> to capture complex dependencies in PPI networks, using 
         <b>RNA expression</b> and <b>immunohistochemistry (IHC) protein expression</b> as node attributes.
     </p>
-    <!-- 
-    Figure: Workflow Diagram
-    <figure>
-        <img src="/assets/img/workflow.png" alt="PPI-OMEGA Workflow" width="80%">
-        <figcaption><b>Figure 2:</b> Overview of the PPI-OMEGA pipeline, from data processing to model prediction.</figcaption>
-    </figure> -->
 
     <b>🟢 Dataset & Preprocessing</b>
     <p>
@@ -35,12 +29,6 @@ permalink: /method/
         </ul>
         Principal component analysis (PCA) was conducted separately for normalized RNA expression and protein expression features to reduce dimensionality.
     </p>
-
-    <!-- Figure: Example of Processed Data
-    <figure>
-        <img src="/assets/img/data_pipeline.png" alt="Data Processing" width="70%">
-        <figcaption><b>Figure 3:</b> Data processing workflow, integrating PPI interactions with RNA & protein expression data.</figcaption>
-    </figure> -->
 
     <b>🟢 Graph Construction</b>
     <p>
@@ -67,6 +55,38 @@ permalink: /method/
         <img src="{{ site.baseurl }}/assets/img/model_architecture.png" alt="VGAE Architecture" width="80%">
         <figcaption><b>Figure 2:</b> Architecture of the Variational Graph Autoencoder (Fan et al., 2020).</figcaption>
     </figure>
+
+
+    <b>🟢 Hyperparameter Tuning</b>
+    <p>
+        To optimize model performance, we performed a grid search over key hyperparameters, including the dropout rate, learning rate, and weight decay. Each configuration was evaluated on the validation set, selecting the combination that yielded the highest AUROC and AP scores.
+    </p>
+
+    <ul>
+        <li><b>Dropout Rate (p):</b> {0.3, 0.4, 0.5}</li>
+        <li><b>Learning Rate (α):</b> {0.001, 0.005, 0.01}</li>
+        <li><b>Weight Decay (λ):</b> {5e-4, 1e-3, 5e-3}</li>
+    </ul>
+    
+    <p>
+        The best-performing configuration was found to be:
+    </p>
+    
+    <ul>
+        <li><b>Dropout Rate:</b> 0.3</li>
+        <li><b>Learning Rate:</b> 0.01</li>
+        <li><b>Weight Decay:</b> 5e-4</li>
+    </ul>
+    
+    <p>
+        This configuration resulted in the highest AUROC (0.9235) and AP (0.9318), significantly improving predictive accuracy compared to suboptimal hyperparameter choices.
+    </p>
+
+    <p>
+        To ensure robustness, we implemented an early stopping strategy based on validation AUROC. If no improvement of at least 0.01 was observed for 60 consecutive epochs, training was halted to prevent overfitting. Additionally, dropout regularization was applied to mitigate overfitting while ensuring stable convergence.
+    </p>
+    
+    
 
     <b>🟢 Training & Evaluation</b>
 
@@ -113,14 +133,6 @@ permalink: /method/
     <p>
         The performance of each model variant was evaluated using <b>AUROC</b> and <b>AP (Average Precision)</b> scores. 
     </p>
-
-    <!-- <p>
-        Evaluation metrics included:
-        <ul>
-            <li><b>AUROC (Area Under Receiver Operating Curve):</b> Measures classification performance.</li>
-            <li><b>AP (Average Precision):</b> Quantifies precision-recall performance.</li>
-        </ul>
-    </p> -->
 
     <p><i>Read more about our method architecture and training details on our <a href="https://github.com/xgui17/artifact-directory-PPI-OMEGA/blob/main/report.pdf">report</a>.</i></p>
 </div>

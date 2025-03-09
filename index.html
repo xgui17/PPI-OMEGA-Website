@@ -17,29 +17,34 @@ title: PPI-OMEGA
 <h4 id="highlight">Highlights</h4>
 
 <p>
-    <b>Protein-protein interaction (PPI)</b> networks are fundamental for understanding 
-	molecular mechanisms in biology, impacting areas such as drug discovery, functional genomics, 
-	and disease pathway identification. However, existing computational approaches often rely on 
-	static datasets, fail to integrate multi-omics data, and struggle with scalability.
+    <b>Protein-protein interaction (PPI)</b> networks are essential for understanding 
+	molecular mechanisms in biology, with applications in drug discovery, functional genomics, 
+	and disease pathway identification. However, existing computational methods often rely on 
+	static interaction datasets, lack multi-omics integration, and require high computational resources.
 </p>
 
 <p>
-    To address these challenges, we introduce <b><i>PPI-OMEGA</i></b> (<u>P</u>rotein-<u>P</u>rotein <u>I</u>nteraction with <u>Om</u>ics-<u>E</u>nhanced <u>G</u>raph <u>A</u>utoencoder), a Variational Graph Autoencoder (VGAE)-based framework
-    that integrates RNA expression profiles and immunohistochemistry (IHC) protein expression levels to enhance 
-    PPI prediction. Our model captures biologically meaningful protein embeddings by combining 
-    graph convolutional layers with multi-omics features.
+    To address these limitations, we present <b><i>PPI-OMEGA</i></b> (<u>P</u>rotein-<u>P</u>rotein <u>I</u>nteraction with <u>Om</u>ics-<u>E</u>nhanced <u>G</u>raph <u>A</u>utoencoder), a Variational Graph Autoencoder (VGAE)-based framework
+    that integrates RNA expression and immunohistochemistry (IHC) protein expression data to enhance 
+    PPI prediction. Our model generates biologically meaningful protein embeddings by leveraging 
+    graph convolutional layers alongside multi-omics features.
 </p>
+
 
 <h5>🟢 Key Findings:</h5>
 <ul>
-    <li><b>Model based on combined features achieved the highest AUROC (0.9057) and AP (0.9135).</b></li>
-    <li><b>Multi-omics integration significantly enhances predictive accuracy</b>, compared to RNA-only models.</li>
-    <li>Our approach reduces <b>computational overhead</b> while facilitating <b>disease association studies and functional classification</b>.</li>
+    <li><b>Multi-omics integration significantly improves predictive accuracy:</b> The combined RNA and protein expression model achieved the highest AUROC (0.9235) and AP (0.9318), outperforming RNA-only and protein-only models.</li>
+    <li><b>Protein expression contributes more than RNA expression:</b> The model using only IHC protein expression performed nearly as well as the multi-omics model (AUROC = 0.9215, AP = 0.9297), while the RNA-only model had a more significant drop in performance.</li>
+    <li><b>Multi-omics features enhance biological relevance:</b> The learned protein embeddings reflect functional characteristics, successfully distinguishing between housekeeping and context-dependent proteins.</li>
+    <li><b>Graph-based embeddings improve model generalizability:</b> The PPI-OMEGA model captures structured protein-protein interaction patterns, reducing computational overhead while enabling potential downstream disease association studies and functional classification.</li>
 </ul>
 
+
 <p>
-    This research demonstrates the potential of <b>graph-based multi-omics integration</b> for improving 
-    <b>disease-relevant PPI modeling</b> and advancing <b>precision medicine applications</b>.
+    This research highlights the power of <b>graph-based multi-omics integration</b> for improving 
+    <b>disease-relevant PPI modeling</b> and advancing <b>precision medicine applications</b>. 
+    Some future improvements include integrating protein sequence data and incorporating attention mechanisms
+    to further refine interaction predictions.
 </p>
 
 {% include pages/introduction.html %}

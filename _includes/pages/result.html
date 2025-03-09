@@ -66,38 +66,61 @@ permalink: /result/
         functional interactions. Meanwhile, the addition of RNA expression demonstrates diminishing return, which highlights needs to look for potential more relevant data.
     </p> 
 
-    <!-- write about baseline here -->
-
     <b>🟢 Training Dynamics</b>
     <p>
-        Throughout training, the model exhibited stable convergence patterns, with both AUROC and AP improving progressively 
-        across epochs (Figure 1). The final multi-omics model outperformed the RNA-only and protein-only 
-        configurations, underscoring the benefits of integrating complementary molecular data.
+        To evaluate model convergence and performance stability, we tracked training dynamics by monitoring AP (Average Precision) scores across epochs (<a href="#fig3">Figure 3</a>). The multi-omics model, which integrates both RNA and protein expression features, demonstrated faster convergence and higher final AP scores compared to single-feature models.
+    </p>
+    <p>
+        The results indicate that:
     </p>
 
-    <!-- put updated figure here -->
-    <!-- <figure>
-        <img src="{{ site.baseurl }}/assets/img/training_curve.jpg" alt="Training Performance" width="50%">
-        <figcaption><b>Figure 1:</b> AUROC and AP scores across training epochs for PPI-OMEGA.</figcaption>
-    </figure> -->
-
-    <!-- <h4>Precision-Recall Performance</h4>
+    <ul>
+        <li>The multi-omics model achieves the highest AP score and converges faster than RNA-only and protein-only models.</li>
+        <li>The protein-only model performs almost as well as the multi-omics model, reinforcing the importance of protein expression features in PPI prediction.</li>
+        <li>The RNA-only model lags in both convergence speed and final AP, suggesting that RNA expression alone provides limited predictive power.</li>
+        <li>The model trained without node features struggles with stability and achieves the lowest AP score, confirming that incorporating biological features significantly improves PPI predictions.</li>
+    </ul>
+    
+    <figure id="#fig3">
+        <img src="{{ site.baseurl }}/assets/img/ap_plot_combined.jpg" alt="Training Performance" width="80%">
+        <figcaption><b>Figure 3:</b> AP scores over training epochs for different feature sets.</figcaption>
+    </figure>
+    
+    <b>🟢 Latent Representation Analysis</b>
     <p>
-        The Precision-Recall curve (Figure 2) highlights the model's ability to accurately classify interacting and 
-        non-interacting protein pairs. The high **Average Precision (AP = 0.9198)** indicates strong predictive power, 
-        further validating the advantages of multi-omics integration.
-    </p> -->
+        To assess the biological relevance of the learned protein embeddings, we examined how the latent representations evolved during training. The model successfully captures biologically meaningful relationships, distinguishing between housekeeping and context-dependent proteins and structuring embeddings based on network connectivity.
+    </p>
 
-    <!-- Precision-Recall Curve -->
-    <!-- <figure>
-        <img src="{{ site.baseurl }}/assets/img/PR_curve.jpg" alt="Precision-Recall Curve" width="70%">
-        <figcaption><b>Figure 2:</b> Precision-Recall curve for PPI-OMEGA.</figcaption>
-    </figure> -->
-    <!-- 
     <p>
-        Future improvements will focus on **optimizing feature weighting** to maximize predictive contributions from each 
-        omics layer while minimizing potential redundancies.
-    </p> -->
+        As shown in <a href="#fig4">Figure 4</a>, we visualized the UMAP projections of protein embeddings at different training epochs, classifying proteins as either housekeeping or context-dependent based on functional annotations. The results show that:
+    </p>
+
+    <ul>
+        <li>The separation between housekeeping and context-dependent proteins increases over training, indicating that the model progressively refines biologically meaningful representations.</li>
+        <li>Some overlap remains, likely reflecting functional interactions between proteins that span both categories.</li>
+    </ul>
+
+    <figure id="fig4">
+        <img src="{{ site.baseurl }}/assets/img/umap_across_epoch.jpg" alt="Latent Representation UMAP" width="100%">
+        <figcaption><b>Figure 4:</b> UMAP projections of latent protein embeddings of different protein groups across training epochs.</figcaption>
+    </figure>
+
+    <p>
+        To further investigate how network structure influences embedding formation, we analyzed the variance of the latent representation mean (μ) for highly connected versus sparsely connected proteins (<a href="#fig5">Figure 5</a>). The findings suggest that:
+    </p>
+    
+
+    <ul>
+        <li>Highly connected proteins converge faster, with their embeddings stabilizing early in training due to strong structural constraints.</li>
+        <li>Sparsely connected proteins exhibit greater variance fluctuations before stabilizing, requiring more training epochs to reach a meaningful latent space representation.</li>
+    </ul>
+
+
+    <figure id="fig5">
+        <img src="{{ site.baseurl }}/assets/img/latent_mu_comparison_linked_nodes.jpg" alt="Variance in Latent Space" width="100%">
+        <figcaption><b>Figure 5:</b> Changes in variance of latent representations for highly and sparsely connected proteins.</figcaption>
+    </figure>
+    
 
     <p><i>Read more detailed results and interpretation on our <a href="https://github.com/xgui17/artifact-directory-PPI-OMEGA/blob/main/report.pdf">report</a>.</i></p>
 </div>
